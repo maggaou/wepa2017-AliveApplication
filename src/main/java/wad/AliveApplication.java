@@ -11,7 +11,7 @@ public class AliveApplication {
     }
 
     public static String githubUrl() {
-        return "";
+        return "https://github.com/maggaou/wepa2017-AliveApplication";
     }
 
     public static String travisUrl() {
