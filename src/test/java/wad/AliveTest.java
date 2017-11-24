@@ -15,13 +15,13 @@ public class AliveTest {
     @Points("04-04.2")
     @Test
     public void hasTravis() {
-        assertTrue(AliveApplication.githubUrl().contains("travis-ci.org/"));
+        assertTrue(AliveApplication.travisUrl().contains("travis-ci.org/"));
     }
 
     @Points("04-04.3")
     @Test
     public void hasHerokuapp() {
-        assertTrue(AliveApplication.githubUrl().contains("herokuapp.com"));
+        assertTrue(AliveApplication.herokuUrl().contains("herokuapp.com"));
     }
 
 }

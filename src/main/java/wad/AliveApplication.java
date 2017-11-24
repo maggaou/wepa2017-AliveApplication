@@ -15,10 +15,10 @@ public class AliveApplication {
     }
 
     public static String travisUrl() {
-        return "";
+        return "https://travis-ci.org/maggaou/wepa2017-AliveApplication";
     }
 
     public static String herokuUrl() {
-        return "";
+        return "https://stormy-hamlet-11885.herokuapp.com/";
     }
 }
