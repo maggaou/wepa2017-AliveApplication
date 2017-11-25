@@ -21,4 +21,5 @@ public class AliveApplication {
     public static String herokuUrl() {
         return "https://stormy-hamlet-11885.herokuapp.com/";
     }
+    
 }

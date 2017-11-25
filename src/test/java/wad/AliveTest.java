@@ -23,5 +23,10 @@ public class AliveTest {
     public void hasHerokuapp() {
         assertTrue(AliveApplication.herokuUrl().contains("herokuapp.com"));
     }
+    
+    @Test
+    public void testaus() {
+        assertTrue("testi ei mene tarkoituksella läpi", false);
+    }
 
 }
