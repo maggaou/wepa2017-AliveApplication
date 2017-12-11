@@ -22,6 +22,7 @@ public class Uutinen extends AbstractPersistable<Long> implements Comparable<Uut
     private String ingressi;
     @OneToOne
     private FileObject kuva;
+    @Column(columnDefinition="TEXT")
     private String sisalto;
     private Date julkaisuaika;
     private Date paivitysaika;
