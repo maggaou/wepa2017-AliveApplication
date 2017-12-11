@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head lang="en">
+        <meta charset="UTF-8" />
+        <title></title>
+    </head>
+    <body>
+        <ul th:fragment="header">
+            <li><a th:href="@{/}">Etusivu</a></li>
+            <li><a th:href="@{/uutiset?jarjestys=julkaisuaika}">Kaikki uusimmat</a></li>
+            <li><a th:href="@{/uutiset?jarjestys=luetuimmatEdelViikko}">Viikon luetuimmat</a></li>
+            <li><a th:href="@{/hallinta}">Uutisten hallinta</a></li>
+            <li th:each="kategoria : ${kategoriat}" th:if="${kategoria.navigaatioValikossa}">
+                <a th:href="@{/uutiset/kategoria/{nimi}(nimi = ${kategoria.nimi})}" 
+                   th:text="${kategoria.nimi}"/>
+            </li>
+        </ul>
+    </body>
+</html>

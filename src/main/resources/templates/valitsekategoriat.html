@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head lang="en">
+        <meta charset="UTF-8" />
+        <title>Valitse kategoriat</title>
+        <link th:href="@{/tyylit/main.css}" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <span th:replace="navigaatio :: header"/>
+        <h2>Valitse navigaation kategoriat</h2>
+        
+        <div th:if="${!kategoriat.empty}">
+        <form  method="post" th:action="@{/valitsekategoriat}">
+            <div th:each="kategoria : ${kategoriat}">
+                <input th:if="${kategoria.navigaatioValikossa}" type="checkbox" th:name="${kategoria.nimi}" th:value="${kategoria.id}" th:text="${kategoria.nimi}" checked></input>
+                <input th:if="${kategoria.navigaatioValikossa == false}" type="checkbox" th:name="${kategoria.nimi}" th:value="${kategoria.id}" th:text="${kategoria.nimi}"></input>
+            </div>
+            <br/>
+            <br/>
+            <input type="submit"></input>
+        </form>
+        </div>
+        <div th:unless="${!kategoriat.empty}">
+            <p>Kategorioita ei ole vielä lisätty!</p>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head lang="en">
+        <meta charset="UTF-8" />
+        <title>Uutiset</title>
+        <link th:href="@{/tyylit/main.css}" rel="stylesheet" type="text/css"/>
+
+    </head>
+    <body>
+        <span th:replace="navigaatio :: header"/>
+        <h1 th:text="${otsikko}"></h1>
+        <table>
+            <tr th:each="uutinen : ${uutiset}">
+                <td>
+                    <a th:href="@{/uutinen/{id}(id=${uutinen.id})}" th:text="${uutinen.otsikko}+' - '+${paivamaarat.get(uutinen.id)}" />
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head lang="en">
+        <meta charset="UTF-8" />
+        <title>Uutisen muokkaaminen</title>
+        <link th:href="@{/tyylit/main.css}" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+
+
+        <h2>Uutisen muokkaaminen</h2>
+
+        <form method="POST" th:action="@{/muokkaa/{id}(id = ${uutinen.id})}" enctype="multipart/form-data">
+            
+            <input type="text" name="otsikko" autofocus th:value="${uutinen.otsikko}" placeholder="otsikko"/><br/>
+            
+            <input type="text" name="ingressi" th:value="${uutinen.ingressi}" placeholder="ingressi"/><br/>
+            
+            Uutisen kuva: <input type="file" name="kuva" ><br/>
+            
+            <textarea rows="4" cols="50" name="sisalto" placeholder="Uutisen sisältö" th:text="${uutinen.sisalto}"></textarea><br/>
+            
+            <textarea rows="1" cols="50" name="kirjoittajat" placeholder="Uutisen kirjoittajat (erota pilkulla)" th:text="${kirjoittajat}"></textarea><br/><br/>
+            
+            <textarea rows="1" cols="50" name="kategoriat" placeholder="Uutisen kategoriat (erota pilkulla)"  th:text="${kategoriat}"></textarea><br/><br/>
+            
+            <input type="submit" value="Tallenna muokkaus"/>
+        </form>
+    </body>
+</html>

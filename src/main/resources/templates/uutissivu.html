@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head lang="en">
+        <meta charset="UTF-8" />
+        <title>Otsikko</title>
+
+        <link th:href="@{/tyylit/main.css}" rel="stylesheet" type="text/css"/>
+
+    </head>
+    <body>
+
+        <span th:replace="navigaatio :: header"/>
+        <div th:if="${viesti}" th:text="${viesti}" class="isa_success">
+            <i class="fa fa-check"></i>
+        </div>
+        <div class="row">
+            <div class="column middle">
+                <img th:src="@{/kuva/{id}(id=${uutinen.kuva.id})}" class="size"/>
+                <h1 th:text="${uutinen.otsikko}"></h1>
+                <span th:text="${uutinen.ingressi}"/><br/><br/>
+                Kirjoittajat<br/>
+                <div th:if="${!uutinen.kirjoittajat.isEmpty()}" th:each="kirjoittaja : ${uutinen.kirjoittajat}">
+                    <div th:text="${kirjoittaja.nimi}"/>
+                </div>
+                <br/>
+                <span th:text="${uutinen.sisalto}"/><br/>
+                <br/>
+                Kategoriat<br/>
+                <div th:if="${!uutinen.kategoriat.isEmpty()}" th:each="kategoria : ${uutinen.kategoriat}">
+                    <div th:text="${kategoria.nimi}"/>
+                </div>
+                <br/>
+                <span th:if="${uutinen.paivitetty}" th:text="'Päivitetty '+${paivitetty}"/><br/>
+                <span th:text="${'Julkaistu ' + julkaistu}"/><br/>
+                <form th:if="${muokkaus}" method="get" th:action="@{/muokkaa/{id}(id = ${uutinen.id})}">
+                    <input type="submit" value="Muokkaa"/>
+                </form>
+                <form th:if="${muokkaus}" method="get" th:action="@{/muokkaus}">
+                    <input type="submit" value="Poistu muokkaustilasta"/>
+                </form>
+            </div>
+            <div class="column side">
+                Luetuimmat<br/>
+                <div th:each="uutinen : ${luetuimmat}">
+                    <a th:href="@{/uutinen/{id}(id=${uutinen.id})}" th:text="${uutinen.otsikko}+' - '+${paivamaaratLuetuimmat.get(uutinen.id)}"/>
+                    <br/>
+                </div>
+                <br/>
+                <br/>
+                Uusimmat<br/>
+                <div th:each="uutinen : ${uusimmat}">
+                    <a th:href="@{/uutinen/{id}(id=${uutinen.id})}" th:text="${uutinen.otsikko}+' - '+${paivamaaratUusimmat.get(uutinen.id)}"/>
+                    <br/>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
